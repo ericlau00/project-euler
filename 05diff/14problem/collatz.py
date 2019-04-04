@@ -1,29 +1,36 @@
 import time 
-startTime = time.time()
-def toCollatz(num,general):
-    seq = [num]
-    while num != 1:
-        if num % 2 == 0:
-            num /= 2
-        else :
-            num = num * 3 + 1
-        if num in general:
-            seq.extend(general[general.index(num):general.index(1,general.index(num))+1])
-            break
-        seq.append(num)
-    return seq
-        
-def problem():
+
+def solution():
+    dictionary = {}
     longest = []
-    general = []
-    for i in range(1,100001):
-        if i in general:
-            continue
-        current = toCollatz(i,general)
-        for element in current:
-            general.append(element)
-        if len(current) >= len(longest):
-            longest = current
-            print "longest", longest[0], len(longest)            
-problem()
-print "Time Elapsed: " + str(time.time() - startTime)
+    length = len(longest)
+    for i in range(1,1000001):
+        if not i in dictionary:
+            to_dictionary(i,dictionary)
+            efficient(i, dictionary)
+            current = len(dictionary[i])
+            if current > length:
+                longest = dictionary[i]
+                length = current 
+    return longest 
+    
+def to_dictionary(N,dictionary):
+    n = N
+    seq = [n] 
+    while n != 1:
+        if n % 2 == 0:
+            n /= 2
+        else:
+            n = n*3 + 1 
+        seq.append(n)
+    dictionary[N] = seq 
+    
+def efficient(n,dictionary):
+    for i in range(len(dictionary[n])):
+        if not dictionary[n][i] in dictionary:
+            dictionary[dictionary[n][i]] = dictionary[n][i:]
+        
+start = time.time()
+print solution()
+end = time.time()
+print end - start 
