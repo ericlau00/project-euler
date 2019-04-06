@@ -3,7 +3,7 @@ public class PrimeGeneratingIntegers {
     public static void main(String[] commandLine) {
         long start = System.currentTimeMillis();
         long sum = 0;
-        for(int i = 1; i < 10000000; i++) {
+        for(int i = 1; i < 101; i++) {
             if (condition(i)) sum += i;
         }
         System.out.println(sum);
