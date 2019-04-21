@@ -17,6 +17,7 @@ public class CountingSummations {
             return outer;
         }
         else {
+        // fix overcounting because of unsorted inner lists
             for(int i = n-1; i > 1; i--) {
                 ArrayList<Integer> inner = new ArrayList<Integer>();
                 inner.add(i);
