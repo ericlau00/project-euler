@@ -6,6 +6,7 @@ def toFib(index):
 def solution():
     place = 1
     while not digitCount(toFib(place), 50 ): 
+        print toFib(place)
         place += 1
     print place, toFib(place)
    
