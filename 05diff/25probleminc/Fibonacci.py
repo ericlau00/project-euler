@@ -1,18 +1,15 @@
 def toFib(index):
-    if index == 1:
-        return 1
-    if index == 2:
-        return 1 
-    else:
-        return toFib(index - 1) + toFib(index - 2)
+    phi = (1 + 5 ** 0.5) / 2 
+    psi = (1 - 5 ** 0.5) / 2 
+    return (phi ** index - psi ** index) / 5 ** 0.5 
      
 def solution():
     place = 1
-    while not digitCount(toFib(place), 1000): 
+    while not digitCount(toFib(place), 50 ): 
         place += 1
-    print place 
+    print place, toFib(place)
    
 def digitCount(number, digits):
-    return len(str(number)) == digits 
+    return len(str(number)) - 2 == digits 
     
 solution()

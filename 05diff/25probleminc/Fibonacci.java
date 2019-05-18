@@ -1,14 +1,28 @@
 public class Fibonacci {
     public static void main(String[] commandLine) {
-        int place = 1;
-        for(; !digitCount(toFib(place),4);place++){ }
-        System.out.println(place);
+        long start = System.currentTimeMillis();
+        int index = 1;
+        for(; !digitCount(toFib(index).toString(),1000); index++) {
+            System.out.println(toFib(index));
+        }
+        System.out.println(index + ": " + toFib(index));
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
+        
     }
-    public static int toFib(int index) {
-        if (index == 1 || index == 2) return 1;
-        return toFib(index - 2) + toFib(index - 1);
+    public static Double toFib(int index) {
+        double phi = (1 + Math.sqrt(5)) / 2;
+        double psi = (1 - Math.sqrt(5)) / 2;
+        return (Math.pow(phi,index) - Math.pow(psi,index)) / Math.sqrt(5);
     }
-    public static boolean digitCount(int num, int digits) {
-        return Integer.toString(num).length() == digits;
+    public static boolean digitCount(String num, int digits) {
+        int mydigits; 
+        int indexOfE = num.indexOf("E");
+        int indexOfDecimal = num.indexOf(".");
+        if(indexOfE > -1) 
+            mydigits = Integer.parseInt(num.substring(indexOfE+1)) + 1;
+        else 
+            mydigits = indexOfDecimal;
+        return mydigits == digits;
     }
 }
