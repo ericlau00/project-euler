@@ -16,17 +16,17 @@ public class WalletSolver {
     
     private void generateWays() {
         if(wallet.lastIsNg() || isDuplicate()) {
-            // System.out.println("last is not good");
+            System.out.println("last is not good");
         }
         else if(wallet.accept()) { 
-            // System.out.println("accept");
+            System.out.println("accept");
             System.out.println(wallet);
             solutions.add(new Wallet(wallet)); 
         }
         else {
             for(int coin: circulation) {
                 wallet.populate(coin);
-                // System.out.println("populate with " + coin + " : " + wallet);
+                System.out.println("populate with " + coin + " : " + wallet);
                 generateWays();
                 wallet.depopulate();
             }
