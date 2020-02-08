@@ -1,5 +1,6 @@
-"""Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. 
+"""Find the thirteen adjacent digits in the 1000-digit number that have the greatest product.
 What is the value of this product?"""
+
 
 def largestProductInASeries():
     num = """73167176531330624919225119674426574742355349194934
@@ -22,7 +23,7 @@ def largestProductInASeries():
 84580156166097919133875499200524063689912560717606
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450"""
-    num = num.replace("\n","")
+    num = num.replace("\n", "")
     curProduct = 0
     for i in range(988):
         product = 1
@@ -31,5 +32,6 @@ def largestProductInASeries():
         if product > curProduct:
             curProduct = product
     print curProduct
-    
+
+
 largestProductInASeries()
